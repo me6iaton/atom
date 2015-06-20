@@ -4,6 +4,7 @@
 Thumbs.db
 .project
 .svn
+.idea
 .nvm-version
 node_modules
 npm-debug.log
