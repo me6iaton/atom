@@ -104,21 +104,7 @@ var setupCoffeeCache = function(cacheDir) {
 }
 
 var setupAtomHome = function() {
-  if (!process.env.ATOM_HOME) {
-    var home;
-    if (process.platform === 'win32') {
-      home = process.env.USERPROFILE;
-    } else {
-      home = process.env.HOME;
-    }
-    var atomHome = path.join(home, '.atom');
-    try {
-      atomHome = fs.realpathSync(atomHome);
-    } catch (error) {
-      // Ignore since the path might just not exist yet.
-    }
-    process.env.ATOM_HOME = atomHome;
-  }
+  process.env.ATOM_HOME = require('remote').process.env.ATOM_HOME;
 }
 
 var setupBabel = function(cacheDir) {
